@@ -1,238 +1,314 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RDQNGHLB1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7RDQNGHLB1');
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Siddharth Pundir | AI Developer</title>
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
-
-    body{
-      background:#050816;
-      color:white;
-      overflow-x:hidden;
-    }
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      text-align:center;
-      padding:20px;
-      position:relative;
-    }
-
-    .glow{
-      position:absolute;
-      width:500px;
-      height:500px;
-      background:#2563eb;
-      filter:blur(160px);
-      opacity:0.25;
-      z-index:-1;
-    }
-
-    .profile{
-      width:180px;
-      height:180px;
-      border-radius:50%;
-      object-fit:cover;
-      border:4px solid #3b82f6;
-      box-shadow:0 0 40px #2563eb;
-      margin-bottom:25px;
-      animation:float 4s ease-in-out infinite;
-    }
-
-    @keyframes float{
-      0%{transform:translateY(0px);}
-      50%{transform:translateY(-10px);}
-      100%{transform:translateY(0px);}
-    }
-
-    h1{
-      font-size:55px;
-      margin-bottom:15px;
-      background:linear-gradient(to right,#ffffff,#60a5fa);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .tagline{
-      font-size:22px;
-      color:#94a3b8;
-      max-width:700px;
-      line-height:1.6;
-      margin-bottom:35px;
-    }
-
-    .buttons{
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
-      justify-content:center;
-    }
-
-    .btn{
-      padding:14px 30px;
-      border-radius:12px;
-      text-decoration:none;
-      font-size:18px;
-      font-weight:bold;
-      transition:0.3s;
-    }
-
-    .primary{
-      background:#2563eb;
-      color:white;
-      box-shadow:0 0 20px #2563eb;
-    }
-
-    .primary:hover{
-      transform:scale(1.08);
-    }
-
-    .secondary{
-      border:2px solid #2563eb;
-      color:white;
-    }
-
-    .secondary:hover{
-      background:#2563eb;
-    }
-
-    .section{
-      padding:100px 20px;
-      text-align:center;
-    }
-
-    .section h2{
-      font-size:40px;
-      margin-bottom:25px;
-      color:#60a5fa;
-    }
-
-    .section p{
-      max-width:800px;
-      margin:auto;
-      font-size:20px;
-      line-height:1.8;
-      color:#cbd5e1;
-    }
-
-    .skills{
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-      margin-top:40px;
-    }
-
-    .skill{
-      padding:15px 25px;
-      background:#0f172a;
-      border:1px solid #1e3a8a;
-      border-radius:15px;
-      font-size:18px;
-      transition:0.3s;
-    }
-
-    .skill:hover{
-      transform:translateY(-5px);
-      box-shadow:0 0 20px #2563eb;
-    }
-
-    footer{
-      text-align:center;
-      padding:30px;
-      color:#64748b;
-      border-top:1px solid #1e293b;
-    }
-
-    @media(max-width:768px){
-      h1{
-        font-size:38px;
-      }
-
-      .tagline{
-        font-size:18px;
-      }
-
-      .profile{
-        width:150px;
-        height:150px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="hero">
-    <div class="glow"></div>
-
-    <img src="profile.jpg" class="profile">
-
-    <h1>Siddharth Pundir</h1>
-
-    <p class="tagline">
-      Building my future through AI, code, and consistency.
-    </p>
-
-    <div class="buttons">
-      <a href="https://x.com/sidpundirdev" target="_blank" class="btn primary">
-        Follow on X
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Siddharth Pundir | AI & Software Engineering Student</title>
+    <meta
+      name="description"
+      content="Portfolio, projects, blogs, resume, and contact details for Siddharth Pundir, an AI and software engineering student."
+    />
+    <meta name="theme-color" content="#070a12" />
+    <meta property="og:title" content="Siddharth Pundir" />
+    <meta
+      property="og:description"
+      content="AI and software engineering student building intelligent web applications and digital experiences."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Siddharth Pundir home">
+        <span class="brand-mark">SP</span>
+        <span>Siddharth Pundir</span>
       </a>
 
-      <a href="https://www.linkedin.com/in/siddharthpundir" target="_blank" class="btn secondary">
-        LinkedIn
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="active" href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="header-cta" href="#contact">
+        <span>Let's Connect</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 17 17 7M9 7h8v8" />
+        </svg>
       </a>
+    </header>
 
-      <a href="https://github.com/Siddharthpundir" target="_blank" class="btn secondary">
-        GitHub
-      </a>
-    </div>
-  </div>
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Hi, I'm</p>
+          <h1>Siddharth Pundir</h1>
+          <p class="hero-role"><span id="typewriter">Computer Science Student</span></p>
+          <p class="hero-text">
+            Exploring the world of AI, building intelligent web applications, and creating digital
+            experiences that feel useful, fast, and thoughtful.
+          </p>
 
-  <section class="section">
-    <h2>About Me</h2>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#projects">
+              <span>View My Work</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a class="secondary-btn" id="resume" href="resume/Siddharth_Pundir_Resume_Final.pdf" download>
+              <span>Download Resume</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" />
+              </svg>
+            </a>
+          </div>
 
-    <p>
-      I'm Siddharth Pundir, a passionate Computer Science student focused on AI,
-      development, technology, and building a strong future in tech.
-      Currently learning C++, web development, AI tools, and modern technologies
-      while documenting my journey online.
-    </p>
+          <div class="social-links" aria-label="Social links">
+            <a href="https://github.com/Siddharthpundir" aria-label="GitHub" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1.3-3.7c4.3-.5 8.8-2.1 8.8-9.4A7.4 7.4 0 0 0 20.6 0a6.8 6.8 0 0 1-.5 4.8A7.5 7.5 0 0 0 13.5 2 7.5 7.5 0 0 0 7 4.8 6.8 6.8 0 0 1 6.5 0a7.4 7.4 0 0 0-1.9 4.9c0 7.3 4.5 8.9 8.8 9.4A4.8 4.8 0 0 0 12 18v4" />
+                <path d="M9 19c-4 1.5-4-2-6-2.5" />
+              </svg>
+            </a>
+            <a href="https://linkedin.com/in/siddharthpundir" aria-label="LinkedIn" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z" />
+                <path d="M2 9h4v12H2z" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a href="https://x.com/sidpundirdev" aria-label="X" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4l16 16M20 4 4 20" />
+              </svg>
+            </a>
+            <a href="mailto:siddharthpundir.dev@gmail.com" aria-label="Email Siddharth">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16v16H4z" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
+            </a>
+          </div>
+        </div>
 
-    <div class="skills">
-      <div class="skill">AI</div>
-      <div class="skill">C++</div>
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">Web Development</div>
-    </div>
-  </section>
+        <div class="hero-visual" aria-label="Profile photo area">
+          <div class="portrait-orbit"></div>
+          <div class="portrait-card">
+            <img src="assets/profile-photo.png" alt="Siddharth Pundir" />
+          </div>
+          <div class="floating-card learn-card">
+            <span class="mini-icon">AI</span>
+            <div>
+              <small>Currently Learning</small>
+              <strong>AI/ML & Next.js</strong>
+            </div>
+          </div>
+          <div class="floating-card build-card">
+            <span class="mini-icon code-icon">&lt;/&gt;</span>
+            <div>
+              <small>Building</small>
+              <strong>Cool Projects</strong>
+            </div>
+          </div>
+          <div class="floating-card open-card">
+            <span class="mini-icon">+</span>
+            <div>
+              <small>Open to</small>
+              <strong>Opportunities</strong>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <footer>
-    © 2026 Siddharth Pundir • Built with passion and consistency.
-  </footer>
+      <section class="stats" aria-label="Portfolio statistics">
+        <article>
+          <span class="stat-icon">&lt;/&gt;</span>
+          <div><strong>3</strong><span>Projects In Progress</span></div>
+        </article>
+        <article>
+          <span class="stat-icon">BP</span>
+          <div><strong>3</strong><span>Blog Topics Planned</span></div>
+        </article>
+        <article>
+          <span class="stat-icon">AI</span>
+          <div><strong>AI + Web</strong><span>Focus Area</span></div>
+        </article>
+        <article>
+          <span class="stat-icon">LM</span>
+          <div><strong>24/7</strong><span>Learning Mode</span></div>
+        </article>
+      </section>
 
-</body>
+      <section class="section about-section" id="about">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>Building with curiosity, code, and AI.</h2>
+        </div>
+        <div class="about-grid">
+          <p>
+            I'm Siddharth Pundir, a Computer Science student passionate about AI, web development,
+            and software engineering. I enjoy building projects, sharing my learning online, and
+            documenting my journey as I grow into a better developer.
+          </p>
+          <div class="skill-cloud" id="skills">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>React</span>
+            <span>Next.js</span>
+            <span>Tailwind CSS</span>
+            <span>Python</span>
+            <span>Git</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid section">
+        <div class="projects-panel" id="projects">
+          <div class="panel-header">
+            <h2>Featured Projects</h2>
+            <span class="muted-link" title="Available after project completion">View all projects</span>
+          </div>
+          <div class="project-list">
+            <article class="project-card">
+              <div class="card-meta">
+                <span class="status-badge">Coming Soon</span>
+                <span class="progress-dot">In Progress</span>
+              </div>
+              <div class="project-shot assistant-shot">
+                <span>How can I help you today?</span>
+              </div>
+              <h3>AI Chat Assistant</h3>
+              <p>Currently in development. Source code and live demo will be available soon.</p>
+              <div class="tags"><span>Next.js</span><span>OpenAI</span><span>Tailwind</span></div>
+              <div class="project-actions">
+                <button type="button" disabled title="Available after project completion">Source</button>
+                <button type="button" disabled title="Available after project completion">Live Demo</button>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="card-meta">
+                <span class="status-badge">Coming Soon</span>
+                <span class="progress-dot">In Progress</span>
+              </div>
+              <div class="project-shot task-shot">
+                <span>Organize. Plan. Achieve.</span>
+              </div>
+              <h3>TaskFlow</h3>
+              <p>Currently in development. Source code and live demo will be available soon.</p>
+              <div class="tags"><span>React</span><span>JavaScript</span><span>CSS</span></div>
+              <div class="project-actions">
+                <button type="button" disabled title="Available after project completion">Source</button>
+                <button type="button" disabled title="Available after project completion">Live Demo</button>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="card-meta">
+                <span class="status-badge">Coming Soon</span>
+                <span class="progress-dot">In Progress</span>
+              </div>
+              <div class="project-shot weather-shot">
+                <span>22°C Clear Sky</span>
+              </div>
+              <h3>Weather Dashboard</h3>
+              <p>Currently in development. Source code and live demo will be available soon.</p>
+              <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              <div class="project-actions">
+                <button type="button" disabled title="Available after project completion">Source</button>
+                <button type="button" disabled title="Available after project completion">Live Demo</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="blog-panel" id="blog">
+          <div class="panel-header">
+            <h2>Latest Blog Posts</h2>
+            <span class="muted-link" title="Available after posts are published">View all posts</span>
+          </div>
+          <article class="blog-item">
+            <div class="blog-thumb ai-thumb">AI</div>
+            <div>
+              <div class="card-meta"><span class="status-badge">Coming Soon</span></div>
+              <h3>Why I Started Posting Tech Content on X and LinkedIn</h3>
+              <p>How sharing my learning publicly is helping me build consistency and confidence.</p>
+              <time>Draft planned</time>
+            </div>
+          </article>
+          <article class="blog-item">
+            <div class="blog-thumb web-thumb">WEB</div>
+            <div>
+              <div class="card-meta"><span class="status-badge">Coming Soon</span></div>
+              <h3>My AI + Web Development Roadmap for College</h3>
+              <p>The path I am following to combine modern web development with applied AI.</p>
+              <time>Draft planned</time>
+            </div>
+          </article>
+          <article class="blog-item">
+            <div class="blog-thumb code-thumb">DEV</div>
+            <div>
+              <div class="card-meta"><span class="status-badge">Coming Soon</span></div>
+              <h3>What I Learned Building My First Portfolio Website</h3>
+              <p>Design, content, and deployment lessons from building my personal website.</p>
+              <time>Draft planned</time>
+            </div>
+          </article>
+        </aside>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's build something useful.</h2>
+        </div>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/siddharthpundir.dev@gmail.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="New message from siddharthpundir.com" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://siddharthpundir.com/thanks.html" />
+          <label>
+            <span>Name</span>
+            <input name="name" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label class="full">
+            <span>Message</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button class="primary-btn" type="submit">
+            <span>Send Message</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 2 11 13" />
+              <path d="m22 2-7 20-4-9-9-4 20-7Z" />
+            </svg>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> Siddharth Pundir</span>
+      <a href="#home">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
