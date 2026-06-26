@@ -86,6 +86,16 @@ export default async function BlogPostPage(props: {
     { year: "numeric", month: "long", day: "numeric" },
   );
 
+  // Resolve the OG image for JSON-LD (always present, never conditional)
+  const postImage = frontmatter.ogImage
+    ? `${SITE_URL}${frontmatter.ogImage}`
+    : frontmatter.coverImage
+      ? `${SITE_URL}${frontmatter.coverImage}`
+      : `${SITE_URL}/assets/og-image.png`;
+
+  // Format dates as full ISO 8601 with timezone for Rich Results compliance
+  const isoPublished = `${frontmatter.publishedAt}T00:00:00+05:30`;
+
   // JSON-LD: BlogPosting + BreadcrumbList schemas
   const jsonLd = [
     {
@@ -97,7 +107,8 @@ export default async function BlogPostPage(props: {
       },
       headline: frontmatter.title,
       description: frontmatter.description,
-      datePublished: frontmatter.publishedAt,
+      datePublished: isoPublished,
+      dateModified: isoPublished,
       inLanguage: "en-US",
       author: {
         "@type": "Person",
@@ -111,9 +122,7 @@ export default async function BlogPostPage(props: {
         name: SITE_NAME,
       },
       url: `${SITE_URL}/blog/${slug}`,
-      ...(frontmatter.coverImage && {
-        image: `${SITE_URL}${frontmatter.coverImage}`,
-      }),
+      image: postImage,
     },
     {
       "@context": "https://schema.org",
