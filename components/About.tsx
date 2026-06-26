@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const SKILLS = [
   "HTML",
   "CSS",
@@ -20,7 +22,9 @@ export default function About() {
         <p>
           I&apos;m Siddharth Pundir, a Computer Science student passionate about AI, web
           development, and software engineering. I enjoy building projects, sharing my learning
-          online, and documenting my journey as I grow into a better developer.
+          online, and documenting my journey as I grow into a better developer. Read more on
+          my <Link href="/blog">blog</Link> or{" "}
+          <a href="#contact">get in touch</a>.
         </p>
         <div className="skill-cloud" id="skills">
           {SKILLS.map((skill) => (

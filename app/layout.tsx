@@ -12,7 +12,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | AI & Software Engineering Student`,
+    default: `${SITE_NAME} — AI & Software Engineering Portfolio`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -20,23 +20,42 @@ export const metadata: Metadata = {
     "Siddharth Pundir",
     "portfolio",
     "AI",
+    "artificial intelligence",
     "software engineering",
     "web development",
     "Next.js",
-    "computer science",
+    "React",
+    "TypeScript",
+    "computer science student",
+    "blog",
   ],
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
   },
   openGraph: {
-    title: SITE_NAME,
+    title: `${SITE_NAME} — AI & Software Engineering Portfolio`,
     description: OG_DESCRIPTION,
     url: "/",
     siteName: SITE_NAME,
@@ -44,26 +63,32 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/profile-photo.png",
-        width: 424,
-        height: 493,
-        alt: `${SITE_NAME} profile photo`,
+        url: "/assets/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — AI & Software Engineering Portfolio`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
+    title: `${SITE_NAME} — AI & Software Engineering Portfolio`,
     description: OG_DESCRIPTION,
-    images: ["/assets/profile-photo.png"],
+    images: ["/assets/og-image.png"],
   },
   icons: {
-    icon: "/assets/favicon.svg",
+    icon: [
+      { url: "/assets/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/assets/profile-photo.png",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#070a12",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#070a12" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f5f7" },
+  ],
   width: "device-width",
   initialScale: 1,
 };

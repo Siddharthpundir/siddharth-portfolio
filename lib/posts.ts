@@ -15,6 +15,7 @@ export type PostFrontmatter = {
   author: string;
   tags: string[];
   coverImage?: string; // absolute public path, e.g. "/blog/covers/my-post.jpg"
+  ogImage?: string; // custom OG image path, e.g. "/assets/blog/og/my-post.png"
   readingTime?: number; // minutes; auto-calculated if omitted
 };
 
@@ -94,4 +95,22 @@ export function getPostBySlug(
   }
 
   return { frontmatter, content };
+}
+
+/**
+ * Returns the previous (older) and next (newer) post for a given slug.
+ */
+export function getPostNavigation(slug: string): { prev: Post | null; next: Post | null } {
+  const posts = getAllPosts();
+  const currentIndex = posts.findIndex((p) => p.slug === slug);
+  
+  if (currentIndex === -1) return { prev: null, next: null };
+
+  // Posts are sorted newest first. 
+  // Next (newer) is currentIndex - 1. 
+  // Prev (older) is currentIndex + 1.
+  return {
+    next: currentIndex > 0 ? posts[currentIndex - 1] : null,
+    prev: currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null,
+  };
 }

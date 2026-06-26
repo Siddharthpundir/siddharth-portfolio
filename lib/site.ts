@@ -4,7 +4,7 @@ export const SITE_URL =
 export const SITE_NAME = "Siddharth Pundir";
 
 export const SITE_DESCRIPTION =
-  "Portfolio, projects, blogs, resume, and contact details for Siddharth Pundir, an AI and software engineering student.";
+  "Siddharth Pundir — Computer Science student exploring AI, web development, and software engineering. Read blog posts, view projects, and get in touch.";
 
 export const OG_DESCRIPTION =
-  "AI and software engineering student building intelligent web applications and digital experiences.";
+  "CS student building with AI, Next.js, and modern web tech. Explore projects, blog posts, and connect.";

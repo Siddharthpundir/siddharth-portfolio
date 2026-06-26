@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { getAllPosts, getPostBySlug, getPostNavigation } from "@/lib/posts";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -29,9 +29,11 @@ export async function generateMetadata(props: {
   if (!data) return {};
 
   const { frontmatter } = data;
-  const ogImage = frontmatter.coverImage
-    ? `${SITE_URL}${frontmatter.coverImage}`
-    : `${SITE_URL}/assets/profile-photo.png`;
+  const ogImage = frontmatter.ogImage
+    ? `${SITE_URL}${frontmatter.ogImage}`
+    : frontmatter.coverImage
+      ? `${SITE_URL}${frontmatter.coverImage}`
+      : `${SITE_URL}/assets/og-image.png`;
 
   return {
     title: frontmatter.title,
@@ -70,6 +72,7 @@ export default async function BlogPostPage(props: {
   if (!data) notFound();
 
   const { frontmatter } = data;
+  const { prev, next } = getPostNavigation(slug);
 
   // Dynamically import the MDX file — Turbopack resolves all slugs at build time
   // via generateStaticParams, so this import is always valid.
@@ -83,28 +86,60 @@ export default async function BlogPostPage(props: {
     { year: "numeric", month: "long", day: "numeric" },
   );
 
-  // JSON-LD: BlogPosting schema for rich search results
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: frontmatter.title,
-    description: frontmatter.description,
-    datePublished: frontmatter.publishedAt,
-    author: {
-      "@type": "Person",
-      name: frontmatter.author,
-      url: SITE_URL,
+  // JSON-LD: BlogPosting + BreadcrumbList schemas
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/blog/${slug}`,
+      },
+      headline: frontmatter.title,
+      description: frontmatter.description,
+      datePublished: frontmatter.publishedAt,
+      inLanguage: "en-US",
+      author: {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: frontmatter.author,
+        url: SITE_URL,
+      },
+      publisher: {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: SITE_NAME,
+      },
+      url: `${SITE_URL}/blog/${slug}`,
+      ...(frontmatter.coverImage && {
+        image: `${SITE_URL}${frontmatter.coverImage}`,
+      }),
     },
-    publisher: {
-      "@type": "Person",
-      name: SITE_NAME,
-      url: SITE_URL,
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${SITE_URL}/blog`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: frontmatter.title,
+          item: `${SITE_URL}/blog/${slug}`,
+        },
+      ],
     },
-    url: `${SITE_URL}/blog/${slug}`,
-    ...(frontmatter.coverImage && {
-      image: `${SITE_URL}${frontmatter.coverImage}`,
-    }),
-  };
+  ];
 
   return (
     <>
@@ -153,27 +188,25 @@ export default async function BlogPostPage(props: {
 
           {/* Post footer */}
           <footer className="blog-post-footer">
-            <Link href="/blog" className="blog-back-link">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 12H5M11 5l-7 7 7 7" />
-              </svg>
-              Back to all posts
-            </Link>
+            <nav className="blog-post-nav" aria-label="Post navigation">
+              {prev ? (
+                <Link href={`/blog/${prev.slug}`} className="blog-nav-link prev">
+                  <small>← Previous Post</small>
+                  <strong>{prev.title}</strong>
+                </Link>
+              ) : (
+                <div />
+              )}
+              {next ? (
+                <Link href={`/blog/${next.slug}`} className="blog-nav-link next">
+                  <small>Next Post →</small>
+                  <strong>{next.title}</strong>
+                </Link>
+              ) : (
+                <div />
+              )}
+            </nav>
           </footer>
-
-          {/* Comments section — Giscus placeholder */}
-          <section className="blog-comments" aria-label="Comments">
-            <div className="blog-comments-inner">
-              <h2 className="blog-comments-title">Discussion</h2>
-              <div className="blog-comments-placeholder">
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="comments-icon">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>
-                <p>Comments coming soon.</p>
-                <span>Powered by Giscus — GitHub Discussions</span>
-              </div>
-            </div>
-          </section>
         </article>
       </main>
       <Footer />

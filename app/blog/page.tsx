@@ -10,33 +10,83 @@ export const metadata: Metadata = {
   // Feeds into root layout template → "Blog | Siddharth Pundir" in the browser tab
   title: "Blog",
   description:
-    "Articles on AI, web development, career growth, projects, and building in public.",
+    "Articles on AI, web development, career growth, projects, and building in public by Siddharth Pundir.",
   alternates: { canonical: "/blog" },
   openGraph: {
     // OG titles bypass the template — set the full string explicitly
     title: `Blog | ${SITE_NAME}`,
     description:
-      "Articles on AI, web development, career growth, projects, and building in public.",
+      "Articles on AI, web development, career growth, projects, and building in public by Siddharth Pundir.",
     url: "/blog",
     siteName: SITE_NAME,
     type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/assets/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} Blog`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `Blog | ${SITE_NAME}`,
     description:
-      "Articles on AI, web development, career growth, projects, and building in public.",
-    images: [`${SITE_URL}/assets/profile-photo.png`],
+      "Articles on AI, web development, career growth, projects, and building in public by Siddharth Pundir.",
+    images: [`${SITE_URL}/assets/og-image.png`],
   },
 };
 
 export default function BlogIndexPage() {
   const posts = getAllPosts();
 
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "@id": `${SITE_URL}/blog`,
+      name: `${SITE_NAME} — Blog`,
+      description:
+        "Articles on AI, web development, career growth, projects, and building in public.",
+      url: `${SITE_URL}/blog`,
+      author: {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: SITE_NAME,
+      },
+      inLanguage: "en-US",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${SITE_URL}/blog`,
+        },
+      ],
+    },
+  ];
+
   return (
     <>
       <Header />
       <main id="main-content">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <section className="blog-index-section">
           <div className="blog-index-hero">
             <Link href="/" className="blog-back-link">
