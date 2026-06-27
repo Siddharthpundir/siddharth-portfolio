@@ -15,10 +15,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     img: ({ src, alt, ...rest }) => (
       <Image
         src={src as string}
-        alt={alt as string}
+        alt={alt ?? ""}
         width={800}
         height={600}
-        unoptimized
+        loading="lazy"
+        sizes="(max-width: 768px) 100vw, 800px"
         style={{ width: "100%", height: "auto", borderRadius: "8px" }}
         {...rest}
       />

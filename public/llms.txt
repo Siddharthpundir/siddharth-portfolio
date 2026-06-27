@@ -1,0 +1,34 @@
+# Siddharth Pundir
+
+> Personal portfolio, blog, and projects by Siddharth Pundir — a Computer Science student exploring AI, web development, and software engineering.
+
+## Links
+
+- Homepage: https://siddharthpundir.com
+- Blog: https://siddharthpundir.com/blog
+- Contact: https://siddharthpundir.com/#contact
+- RSS Feed: https://siddharthpundir.com/feed.xml
+- Sitemap: https://siddharthpundir.com/sitemap.xml
+- GitHub: https://github.com/Siddharthpundir
+- LinkedIn: https://www.linkedin.com/in/siddharthpundir
+
+## About
+
+Siddharth Pundir is a Computer Science Engineering student passionate about artificial intelligence, web development, and software engineering. He builds projects in public, writes technical blog posts, and shares his learning journey online.
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- TypeScript
+- React 19
+- MDX for blog content
+- Deployed on Vercel
+
+## Blog Topics
+
+- AI and machine learning
+- Web development
+- Software engineering
+- Developer tools
+- Career growth
+- Building in public

@@ -8,6 +8,7 @@ import {
 } from "@/lib/site";
 import "@fontsource-variable/inter";
 import "./globals.css";
+import Analytics from "./analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -120,6 +121,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
